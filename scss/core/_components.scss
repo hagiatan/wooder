@@ -1,0 +1,158 @@
+//textbox
+.textbox {
+    --pText: 100px;
+    --pRight: 20px;
+    padding-left: var(--pText);
+    padding-top: 80px;
+    padding-right: var(--pRight);
+    &__title {
+        @include text(40px, pb, $lh-text, $color-text-dark, uppercase);
+        letter-spacing: 6px;
+        margin: 0;
+        &.--color-brown {
+            color: $color-main;
+        }
+        &.--color-white{
+            color: $color-text-light;
+        }
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        &::before {
+            content: "";
+            width: 80px;
+            height: 2px;
+            display: inline-block;
+            background-color: $bg-dark;
+            position: relative;
+            margin-left: -80px;
+            left: -20px;
+        }
+    }
+    &__des {
+        font-size: 16px;
+        color: $color-text;
+        padding: 10px 0 24px 0;
+        &.--color-white {
+            color: $color-text-light;
+        }
+    }
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        font-family: pb;
+        letter-spacing: 2px;
+        position: relative;
+        font-size: 14px;
+        color: $color-text-dark;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        @include transition($t);
+        img {
+            margin-left: 10px;
+            width: 30px;
+            height: 9px;
+        }
+        &::before {
+            content: "";
+            width: 35px;
+            height: 2px;
+            background-color: $bg-main;
+            display: block;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+        img {
+            position: relative;
+            @include transform(translateX(0px));
+            @include transition($t);
+        }
+        &:hover {
+            opacity: 0.6;
+            img {
+                @include transform(translateX(10px));
+                @include transition($t);
+            }
+        }
+        // @include xs {
+        //     padding: 10px 20px;
+        // }
+    }
+    &.--text-right {
+        text-align: right;
+        padding-left: 0;
+        padding-right: var(--pText);
+        padding-left: var(--pRight);
+
+        .textbox__title {
+            flex-direction: row-reverse;
+            &::before {
+                margin-left: initial;
+                left: initial;
+                margin-right: -80px;
+                right: -20px;
+            }
+        }
+    }
+
+    &.--center {
+        max-width: 550px;
+        padding-left: 0;
+        padding-top: 0px;
+        padding-right: 0;
+        text-align: center;
+        margin: 0 auto;
+        .textbox__title {
+            flex-direction: column-reverse;
+            &::before {
+                width: 40px;
+                left: initial;
+                right: initial;
+                margin: 10px auto;
+                background: $bg-main;
+            }
+        }
+    }
+    &.--info {
+        padding-left: 0;
+        padding-top: 0px;
+        padding-right: 0;
+        text-align: left;
+        .textbox__title {
+            color: $color-main;
+            &::before {
+                display: none;
+            }
+        }
+    }
+    @include sm {
+        --pText: 0px;
+        --pRight: 20px;
+        padding-left: var(--pText);
+        padding-top: 20px;
+        padding-right: var(--pRight);
+        .textbox__title {
+            &::before {
+                display: none;
+            }
+        }
+        
+    }
+    @include xs {
+        .textbox__title {
+            font-size: 26px;
+            letter-spacing: 0;
+        }
+        
+    }
+}
+
+//box-center
+.box-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

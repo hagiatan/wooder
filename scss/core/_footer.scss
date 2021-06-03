@@ -1,0 +1,45 @@
+//footer
+footer {
+    padding: 25px 0;
+    background-color: #050505;
+    color: #b0b0b0;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        .logoft {
+            position: absolute;
+            left: 50%;
+            @include transform(translateX(-50%));
+            a {
+                display: block;
+                text-decoration: none;
+                img {
+                    width: 175px;
+                }
+            }
+        }
+        .copy,
+        .backtotop {
+            color: #b0b0b0;
+            font-size: 12px;
+        }
+        .backtotop {
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+    @include xs {
+        .container {
+            flex-direction: column;
+        }
+        .logoft {
+            margin: 20px auto;
+            position: initial !important;
+            left: initial !important;
+            @include transform(initial !important);
+        }
+    }
+}
